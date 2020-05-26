@@ -2,32 +2,23 @@
  * @Author: stephenHe
  * @Date: 2020-05-26 15:03:05
  * @LastEditors: stephenHe
- * @LastEditTime: 2020-05-26 15:16:29
+ * @LastEditTime: 2020-05-26 16:31:41
  * @Description: 根组件
- * @FilePath: /cloud-music/App.js
+ * @FilePath: /cloud-music/src/App.js
  */
 
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import { GlobalStyle } from "./style";
+import { IconStyle } from "./assets/iconfont/iconfont";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* 全局样式 */}
+      <GlobalStyle />
+      {/* 全局的iconfont */}
+      <IconStyle />
+      <i className="iconfont">&#xe62b;</i>
     </div>
   );
 }
