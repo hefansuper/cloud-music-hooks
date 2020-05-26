@@ -1,6 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+/*
+ * @Author: stephenHe
+ * @Date: 2020-05-26 15:03:05
+ * @LastEditors: stephenHe
+ * @LastEditTime: 2020-05-26 15:16:29
+ * @Description: 根组件
+ * @FilePath: /cloud-music/App.js
+ */
+
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
   return (
