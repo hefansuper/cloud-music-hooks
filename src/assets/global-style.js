@@ -1,3 +1,12 @@
+/*
+ * @Author: stephenHe
+ * @Date: 2020-05-26 15:33:33
+ * @LastEditors: stephenHe
+ * @LastEditTime: 2020-08-03 15:04:40
+ * @Description: 代码千万条，注释第一条。注释不规范，维护两行泪
+ * @FilePath: /cloud-music/src/assets/global-style.js
+ */
+
 const extendClick = () => {
   return `
     position: relative;
@@ -22,14 +31,14 @@ const bgFull = () => {
     background-position: 50%;
     background-size: contain;
     background-repeat: no-repeat;
-  `
+  `;
 };
 
 export default {
   "theme-color": "#d44439",
   "theme-color-shadow": "rgba(212, 68, 57, .5)",
   "font-color-light": "#f1f1f1",
-  "font-color-light-shadow": "rgba(241, 241, 241, 0.6)",//略淡
+  "font-color-light-shadow": "rgba(241, 241, 241, 0.6)", //略淡
   "font-color-desc": "#2E3030",
   "font-color-desc-v2": "#bba8a8", //略淡
   "font-size-ss": "10px",
@@ -43,7 +52,7 @@ export default {
   "background-color-shadow": "rgba(0, 0, 0, 0.3)",
   "highlight-background-color": "#fff",
   "official-red": "#E82001",
+  bgFull,
   extendClick,
   noWrap,
-  bgFull
 };

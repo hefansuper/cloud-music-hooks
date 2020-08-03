@@ -2,7 +2,7 @@
  * @Author: stephenHe
  * @Date: 2020-05-26 16:52:21
  * @LastEditors: stephenHe
- * @LastEditTime: 2020-05-26 17:49:10
+ * @LastEditTime: 2020-08-03 17:51:29
  * @Description: 路由配置页面。
  * @FilePath: /cloud-music/src/routes/index.js
  */
@@ -19,23 +19,24 @@ export default [
   {
     path: "/",
     component: Home,
-    exact: true,
-    render: () => <Redirect to={"/Home"} />,
-  },
-  {
-    path: "/home",
-    component: Home,
-  },
-  {
-    path: "/recommend",
-    component: Recommend,
-  },
-  {
-    path: "/singers",
-    component: Singers,
-  },
-  {
-    path: "/rank",
-    component: Rank,
+    routes: [
+      {
+        path: "/",
+        exact: true,
+        render: () => <Redirect to={"/recommend"} />,
+      },
+      {
+        path: "/recommend",
+        component: Recommend,
+      },
+      {
+        path: "/singers",
+        component: Singers,
+      },
+      {
+        path: "/rank",
+        component: Rank,
+      },
+    ],
   },
 ];
