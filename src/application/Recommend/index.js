@@ -1,15 +1,31 @@
-/*
- * @Author: stephenHe
- * @Date: 2020-05-26 17:15:04
- * @LastEditors: stephenHe
- * @LastEditTime: 2020-08-03 17:53:36
- * @Description: 代码千万条，注释第一条。注释不规范，维护两行泪
- * @FilePath: /cloud-music/src/application/Recommend/index.js
- */
 import React from "react";
+import Slider from "../../components/Slider/index";
+import RecommendList from "../../components/RecommendList/index";
 
 function Recommend(props) {
-  return <div>Recommend</div>;
+  const bannerList = [1, 2, 3, 4].map(() => {
+    return {
+      imageUrl:
+        "http://p1.music.126.net/ZYLJ2oZn74yUz5x8NBGkVA==/109951164331219056.jpg",
+    };
+  });
+
+  const recommendList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => {
+    return {
+      id: 1,
+      picUrl:
+        "https://p1.music.126.net/fhmefjUfMD-8qtj3JKeHbA==/18999560928537533.jpg",
+      playCount: 17171122,
+      name: "朴树、许巍、李健、郑钧、老狼、赵雷",
+    };
+  });
+
+  return (
+    <div>
+      <Slider bannerList={bannerList} />
+      <RecommendList recommendList={recommendList}></RecommendList>
+    </div>
+  );
 }
 
 export default React.memo(Recommend);
