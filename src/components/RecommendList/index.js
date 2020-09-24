@@ -2,13 +2,14 @@
  * @Author: stephenHe
  * @Date: 2020-08-04 11:34:42
  * @LastEditors: stephenHe
- * @LastEditTime: 2020-08-04 11:50:01
+ * @LastEditTime: 2020-09-22 14:01:49
  * @Description: 代码千万条，注释第一条。注释不规范，维护两行泪
  * @FilePath: /cloud-music/src/components/RecommendList/index.js
  */
 
 import React from "react";
 import { getCount } from "../../../src/api/utils";
+import LazyLoad from "react-lazyload";
 import { ListWrapper, ListItem, List } from "./style";
 
 function RecommendList(props) {
@@ -16,29 +17,39 @@ function RecommendList(props) {
 
   return (
     <ListWrapper>
-      <h1 className="title"> 推荐歌单 </h1>
+      <h1 className="title">推荐歌单</h1>
       <List>
-        {props.recommendList.map((item, index) => {
+        { recommendList.map((item) => {
           return (
-            <ListItem key={item.id + index}>
+            <ListItem key={ item.id }>
               <div className="img_wrapper">
                 <div className="decorate"></div>
-                {/* 加此参数可以减小请求的图片资源大小 */}
-                <img
-                  src={item.picUrl + "?param=300x300"}
-                  width="100%"
-                  height="100%"
-                  alt="music"
-                />
+                <LazyLoad
+                  placeholder={
+                    <img
+                      width="100%"
+                      height="100%"
+                      src={ require("./music.png") }
+                      alt="music"
+                    />
+                  }
+                >
+                  <img
+                    src={ item.picUrl + "?param=300x300" }
+                    width="100%"
+                    height="100%"
+                    alt="music"
+                  />
+                </LazyLoad>
                 <div className="play_count">
                   <i className="iconfont play">&#xe885;</i>
-                  <span className="count">{getCount(item.playCount)}</span>
+                  <span className="count">{ getCount(item.playCount) }</span>
                 </div>
               </div>
-              <div className="desc">{item.name}</div>
+              <div className="desc">{ item.name }</div>
             </ListItem>
           );
-        })}
+        }) }
       </List>
     </ListWrapper>
   );

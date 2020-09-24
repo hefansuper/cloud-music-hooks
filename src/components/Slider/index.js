@@ -2,7 +2,7 @@
  * @Author: stephenHe
  * @Date: 2020-08-04 10:28:53
  * @LastEditors: stephenHe
- * @LastEditTime: 2020-08-04 11:31:34
+ * @LastEditTime: 2020-08-04 16:29:17
  * @Description: 代码千万条，注释第一条。注释不规范，维护两行泪
  * @FilePath: /cloud-music/src/components/Slider/index.js
  */
@@ -39,17 +39,20 @@ function Slider(props) {
         <div className="swiper-wrapper">
           {bannerList.map((slider, index) => {
             return (
-              <div className="slider-nav" key={index}>
-                <img
-                  src={slider.imageUrl}
-                  width="100%"
-                  height="100%"
-                  alt="推荐"
-                />
+              <div className="swiper-slide" key={index}>
+                <div className="slider-nav">
+                  <img
+                    src={slider.imageUrl}
+                    width="100%"
+                    height="100%"
+                    alt="推荐"
+                  />
+                </div>
               </div>
             );
           })}
         </div>
+        <div className="swiper-pagination"></div>
       </div>
     </SliderContainer>
   );
