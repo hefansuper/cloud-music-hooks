@@ -1,3 +1,11 @@
+/*
+ * @Author: stephenHe
+ * @Date: 2020-05-26 17:15:04
+ * @LastEditors: stephenHe
+ * @LastEditTime: 2020-09-28 17:07:31
+ * @Description: 
+ * @FilePath: /cloud-music/src/application/Recommend/index.js
+ */
 import React, { useEffect } from "react";
 import Slider from "../../components/Slider/index";
 import RecommendList from "../../components/RecommendList/index";
@@ -5,32 +13,45 @@ import Scroll from "../../baseUI/Scroll/index";
 import { connect } from "react-redux";
 import * as actionTypes from './store/actionCreators';
 import { Content } from "./style.js";
+import { forceCheck } from 'react-lazyload';
+import Loading from '../../baseUI/Loading/index'
 
 function Recommend(props) {
 
-  const { bannerList, recommendList } = props
+  const { bannerList, recommendList, enterLoading } = props
   const { getBannerDataDispatch, getRecommendListDataDispatch } = props;
 
 
   useEffect(() => {
-    getBannerDataDispatch();
-    getRecommendListDataDispatch();
+
+    if (!bannerList.size) {
+      getBannerDataDispatch();
+    }
+
+    if (!recommendList.size) {
+      getRecommendListDataDispatch();
+    }
+
     //eslint-disable-next-line
   }, [])
 
   const bannerListJS = bannerList ? bannerList.toJS() : []
   const recommendListJS = recommendList ? recommendList.toJS() : []
 
-
-
   return (
     <Content>
-      <Scroll className="list">
+      <Scroll className="list" onScroll={ forceCheck }>
         <div>
           <Slider bannerList={ bannerListJS } />
           <RecommendList recommendList={ recommendListJS } />
         </div>
       </Scroll>
+
+      {/* loading */ }
+      {
+        enterLoading ? <Loading /> : null
+      }
+
     </Content>
   );
 }
@@ -38,7 +59,8 @@ function Recommend(props) {
 // 映射 redux全局的state到组件的props上。
 const mapStateToProps = (state) => ({
   bannerList: state.getIn(['recommend', 'bannerList']),
-  recommendList: state.getIn(['recommend', 'recommendList'])
+  recommendList: state.getIn(['recommend', 'recommendList']),
+  enterLoading: state.getIn(['recommend', 'enterLoading'])
 })
 
 // 映射dispatch到props上。
@@ -54,8 +76,6 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(actionTypes.getRecommendList())
     }
   }
-
-
 }
 
 

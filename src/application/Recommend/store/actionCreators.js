@@ -2,7 +2,7 @@
  * @Author: stephenHe
  * @Date: 2020-09-22 14:25:38
  * @LastEditors: stephenHe
- * @LastEditTime: 2020-09-23 17:59:34
+ * @LastEditTime: 2020-09-28 15:57:46
  * @Description: 放不同 action 的地方
  * @FilePath: /cloud-music/src/application/Recommend/store/actionCreators.js
  */
@@ -21,12 +21,18 @@ const changeRecommendList = (data) => ({
     type: actionTypes.CHANGE_RECOMMEND_LIST,
     data: fromJS(data)
 })
+const changeEnterLoading = (data) => ({
+    type: actionTypes.CHANGE_ENTER_LOADING,
+    data: fromJS(data)
+})
 
 
 const getBannerList = () => {
     return (dispatch) => {
         getBannerRequest().then(data => {
             dispatch(changeBannerList(data.banners))
+            // 改变loading
+            dispatch(changeEnterLoading(false))
         }).catch((error) => {
             console.log('轮播图报错', error)
         })

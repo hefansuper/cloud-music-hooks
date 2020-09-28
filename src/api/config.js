@@ -2,13 +2,13 @@
  * @Author: stephenHe
  * @Date: 2020-09-22 14:20:24
  * @LastEditors: stephenHe
- * @LastEditTime: 2020-09-23 18:59:26
+ * @LastEditTime: 2020-09-24 14:58:59
  * @Description: 
  * @FilePath: /cloud-music/src/api/config.js
  */
 
 import axios from 'axios';
-const baseUrl = 'http://192.168.68.172:3000';
+const baseUrl = 'http://192.168.68.172:4000';
 
 //axios 的实例及拦截器配置
 const axiosInstance = axios.create({
